@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from "react";
+import {Box,Heading,Text,Button} from "@chakra-ui/react";
 import './App.css';
-
+/*--------------------------------------------Pages------------------------------------------------*/
+import Home from './Pages/Home'
+import Work from './Pages/Work'
+import About from "./Pages/About";
+import Contact from "./Pages/Conatct";
+import Skills from "./Pages/Skills";
+/*--------------------------------------------Components------------------------------------------------*/
+import Sidebar from "./components/Sidebar";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box bgColor="background" w='100%' minH='100vh' h='auto'  py={10} px={{base:5,lg:10}} >
+      <Sidebar  />
+    <Home />
+    <Work />
+    <Skills />
+    <About />
+    <Contact />
+    </Box>
   );
 }
 
 export default App;
+ 
