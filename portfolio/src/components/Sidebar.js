@@ -22,6 +22,8 @@ function Sidebar() {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+
+    onClose();
   };
 
   return (
