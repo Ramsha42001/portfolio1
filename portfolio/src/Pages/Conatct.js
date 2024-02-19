@@ -139,16 +139,16 @@ function Contact() {
         transition={{ duration: 0.5, delay: 0.8 }}
         color="subHeading"
         fontSize={{ base: "m", lg: "xl" }}
-        py={5}>Got a Project?</MotionHeading>
+        py={{base: 2,lg: 5}} mr={{base: 0, lg: 20}}>Got a Project?</MotionHeading>
         <MotionHeading fontFamily='mainFont'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
         color="subHeading"
         fontSize={{ base: "m", lg: "xl" }}
-        py={5}>Let's Talk</MotionHeading>
-        <Button fontFamily="mainFont"
-         ml={10} my={5} w={{ base: '200px', lg: '300px' }} 
+        py={{base: 2,lg: 5}}  mr={{base: 0, lg: 20}}>Let's Talk</MotionHeading>
+        <Button fontFamily="mainFont"  mr={{base: 0, lg: 20}}
+          my={5} w={{ base: '200px', lg: '300px' }} 
          h="50px" variant='outline' color='subHeading' 
          border='2px' borderColor='subHeading' 
          _hover={{ bg: 'subHeading', color: 'black' }}  

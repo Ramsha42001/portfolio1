@@ -3,6 +3,7 @@ import { Box, Heading, Text, Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import "../Fonts/Cascadia.ttf";
+import { ClassNames } from "@emotion/react";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -50,6 +51,7 @@ function Home() {
       >
         I'm <span style={{ color: "#5EDFFF" }}>R</span>amsha
       </MotionHeading>
+      <Box fontSize={{ base: "l", md: "l", lg: "xl" }}>
       <TypeAnimation
         sequence={[
           // Same substring at the start will only be typed out once, initially
@@ -63,18 +65,20 @@ function Home() {
         wrapper="span"
         speed={50}
         style={{
-          fontSize: "3rem",
           display: "inline-block",
           color: "white",
           fontFamily: "'Cascadia Code', monospace",
           fontWeight: "bold",
-          marginLeft: "35px"
+          marginLeft: "35px",
+         
         }}
+
+        fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
         repeat={Infinity}
-      />
+      /></Box>
       <Text fontFamily="mainFont" fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" ml={10} mb={10}> {'<'}h1{'/>'}</Text>
       <Text fontFamily="mainFont" fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" ml={10}> {'<'}p{'>'}</Text>
-      <Button fontFamily="mainFont" ml={10} my={5} w={{ base: '200px', lg: '300px' }} h="50px" variant='outline' color='subHeading' border='2px' borderColor='subHeading' _hover={{ bg: 'subHeading', color: 'black' }}  as="a"  href="mailto:ramshaiqbal4@gmail.com">Contact Me</Button>
+      <Button fontFamily="mainFont" ml={10} my={5} w={{ base: '200px', lg: '300px' }} h="50px" variant='outline' color='body' border='2px' borderColor='subHeading' _hover={{ bg: 'subHeading', color: 'black' }}  as="a"  href="mailto:ramshaiqbal4@gmail.com">Contact Me</Button>
       <Text fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" ml={10}> {'<'}p{'/>'}</Text>
     </MotionBox>
   );
