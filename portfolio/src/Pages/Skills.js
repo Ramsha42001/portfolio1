@@ -1,36 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Box, Text, Heading, Progress } from "@chakra-ui/react";
+import { Box, Text, Heading, CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import WorkData from "../Data/Work";
-import skills from "../Data/Skills";
+import skillsDevelopment from "../Data/Skills";
+
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
 const MotionHeading = motion(Heading);
-const MotionProgress = motion(Progress);
 
 function Skills() {
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
-    rootMargin: "-100px 0px",
   });
 
   useEffect(() => {
-    console.log("inView:", inView);
     if (inView) {
       setIsVisible(true);
-      console.log("visible!");
     }
   }, [inView]);
 
+  // Motion variants for staggered animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // delay between each child animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <MotionBox
-    id="skills"
+      id="skills"
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isVisible ? { opacity: 1 } : {}}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
       transition={{ duration: 0.5, delay: 0.5 }}
       fontFamily="mainFont"
       w={{ base: "100%", lg: "80%" }}
@@ -38,7 +51,7 @@ function Skills() {
       ml={{ base: "0%", lg: "15%" }}
       mt={{ base: "35px", lg: "0" }}
       display="flex"
-      flexDirection={{ base: "column", lg: "row" }}
+      flexDirection={{ base: "column", lg: "column" }}
       justifyContent="space-between"
     >
       <MotionBox
@@ -48,11 +61,7 @@ function Skills() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <MotionText
-          fontSize={{ base: "1rem", lg: "m" }}
-          fontWeight="normal"
-          color="code"
-        >
+        <MotionText fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code">
           {"<"}h2{">"}
         </MotionText>
         <MotionHeading
@@ -63,84 +72,65 @@ function Skills() {
         >
           Skills and Experience
         </MotionHeading>
-        <MotionText
-          fontSize={{ base: "1rem", lg: "m" }}
-          fontWeight="normal"
-          color="code"
-          mb={10}
-        >
+        <MotionText fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" mb={10}>
           {"<"}h2{"/>"}
-        </MotionText>
-
-        <MotionText
-          fontSize={{ base: "1rem", lg: "m" }}
-          fontWeight="normal"
-          color="code"
-        >
-          {"<"}p{">"}
-        </MotionText>
-        <MotionText
-          fontSize={{ base: "1rem", lg: "m" }}
-          fontWeight="normal"
-          color="heading"
-          py={5}
-        >
-          Welcome to my portfolio! Here, I showcase a collection of my finest
-          work, reflecting my passion, creativity, and dedication. Each piece
-          is a testament to my skills and expertise, crafted with precision
-          and care. From web design and development to graphic design and
-          creative projects, explore the diverse range of my capabilities. Dive
-          in and discover the essence of my talent, innovation, and commitment
-          to excellence.
-        </MotionText>
-        <MotionText
-          fontSize={{ base: "1rem", lg: "m" }}
-          fontWeight="normal"
-          color="code"
-          mb={5}
-        >
-          {"<"}p{"/>"}
         </MotionText>
       </MotionBox>
 
       <MotionBox
-        w={{ base: "100%", lg: "40%" }}
+        w={{ base: "100%", lg: "100%" }}
         h="auto"
         display="flex"
-        justifyContent="center"
+        flexWrap="wrap"
+        justifyContent="space-between"
         alignItems="center"
-        flexDirection="column"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
       >
-        {skills.map((skill, index) => (
+        {skillsDevelopment.map((skill, index) => (
           <MotionBox
             key={index}
-            w="100%"
-            py="5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+            display="flex"
+            flexDirection="column"
+            mb={10}
+            mx={10}
+            variants={itemVariants}
           >
             <MotionHeading
               pb={3}
-              fontSize={{ base: "m", lg: "m" }}
-              color="subHeading"
+              fontSize={{ base: "s", lg: "s" }}
+              color="heading"
               fontWeight="normal"
+              textAlign="center"
             >
               {skill.name}
             </MotionHeading>
-            <MotionProgress
-              colorScheme="red"
-              size="sm"
-              value={skill.value}
-              borderRadius={15}
-              w="90%"
-            />
+            <Box position="relative" display="flex" justifyContent="center" alignItems="center">
+              <CircularProgress
+                value={skill.value}
+                size="75px"
+                thickness="4px"
+                color="#5EDFFF"
+                sx={{
+                  boxShadow: "0px 0px 8px 4px #5EDFFF", // Creates the circular glow
+                  borderRadius: "50%", // Ensures the shadow is circular
+                }}
+              >
+                <CircularProgressLabel>
+                  <Text fontSize="lg" color="gray.800">
+                    {`${skill.value}%`}
+                  </Text>
+                </CircularProgressLabel>
+              </CircularProgress>
+            </Box>
           </MotionBox>
         ))}
       </MotionBox>
+
+      <MotionText fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" mb={5}>
+        {"<"}p{"/>"}
+      </MotionText>
     </MotionBox>
   );
 }

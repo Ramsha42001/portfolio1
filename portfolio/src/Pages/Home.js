@@ -4,21 +4,27 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import "../Fonts/Cascadia.ttf";
 import { ClassNames } from "@emotion/react";
+import ramsha from '../images/ramsha1.png'
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
 function Home() {
   return (
+    <>
+    <Box display='flex' flexDirection={{base:'column-reverse',md:'column-reverse',lg:'row'}} >
     <MotionBox
     id="home"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      w={{ base: "100%", lg: "80%" }}
-      h="auto"
-      ml={{ base: "0%", lg: "15%" }}
-      mt={{ base: "35px", lg: "0" }}
+      w={{base:'100%',lg:'60%'}}
+    
+      // w={{ base: "100%", lg: "80%" }}
+      minH="100vh"
+      h='auto'
+      ml={{ base: "0%", lg: "10%" }}
+      mt={{ base: "35px", lg: "5%" }}
     >
       <Text fontFamily="mainFont" fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code">{'<'}html{'>'}</Text>
       <Text fontFamily="mainFont" fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" ml={10} mb={10}> {'<'}body{'>'}</Text>
@@ -49,21 +55,21 @@ function Home() {
         fontWeight="bold"
         letterSpacing="normal"
       >
-        I'm <span style={{ color: "#5EDFFF" }}>R</span>amsha
+        I'm <span style={{color:'#5EDFFF'}}>R</span>amsha
       </MotionHeading>
-      <Box fontSize={{ base: "l", md: "l", lg: "xl" }}>
+      <Box minH={100} fontSize={{ base: "l", md: "l", lg: "xl" }}>
       <TypeAnimation
         sequence={[
           // Same substring at the start will only be typed out once, initially
           "Full Stack Developer",
           1000, // wait 1s before replacing "Mice" with "Hamsters"
-          "React Developer",
+          "Data Science Enthusiast",
           1000,
-          "Web Designer",
+          "Data Analysis Enthusiast",
           1000
         ]}
         wrapper="span"
-        speed={50}
+        speed={60}
         style={{
           display: "inline-block",
           color: "white",
@@ -81,6 +87,13 @@ function Home() {
       <Button fontFamily="mainFont" ml={10} my={5} w={{ base: '200px', lg: '300px' }} h="50px" variant='outline' color='body' border='2px' borderColor='subHeading' _hover={{ bg: 'subHeading', color: 'black' }}  as="a"  href="mailto:ramshaiqbal4@gmail.com">Contact Me</Button>
       <Text fontSize={{ base: "1rem", lg: "m" }} fontWeight="normal" color="code" ml={10}> {'<'}p{'/>'}</Text>
     </MotionBox>
+    <Box w={{base:'100%',lg:'30%'}}  display='flex'  alignItems={{base:'center',lg:'center'}} justifyContent={{base:'center'}}>
+      <Box mt={{base:'10%',md:'5%',lg:'0%'}} w={{base:200,md:200,lg:300}} h={{base:200,md:200,lg:300}} borderRadius='100%' border='8px' borderColor='white'>
+<img src={ramsha} style={{width:'100%', height:'100%'}}/></Box>
+</Box>
+    </Box>
+   
+    </>
   );
 }
 

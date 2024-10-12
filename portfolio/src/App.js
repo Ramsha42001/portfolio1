@@ -11,12 +11,15 @@ import Skills from "./Pages/Skills";
 import Sidebar from "./components/Sidebar";
 function App() {
   return (
-    <Box bgColor="background" w='100%' minH='100vh' h='auto'  py={10} px={{base:5,lg:10}} >
+    <Box bgColor="background" w='100%' minH='100vh' h='auto'   
+     px={{base:5,lg:10}}  py={15}
+    >
       <Sidebar  />
     <Home />
-    <Work />
-    <Skills />
     <About />
+     <Work />
+    <Skills />
+    
     <Contact />
     </Box>
   );
