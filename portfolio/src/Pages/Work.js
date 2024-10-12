@@ -165,12 +165,12 @@ function Work() {
       </Box>
 
       {/* Modal for displaying detailed projects */}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal px={0} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent bg="gray.800" maxW="90%" minH="80%" borderRadius="10px"> {/* Set background color and size */}
-          <ModalHeader color="white">Projects</ModalHeader> {/* Change header color if needed */}
+        <ModalContent bg="gray.800" maxW="90%" minH="80%" borderRadius="10px" p={0}> {/* Set padding to zero */}
+          <ModalHeader color="white">Projects</ModalHeader>
           <ModalCloseButton color="white" />
-          <ModalBody display='flex' flexDirection='row' flexWrap='wrap'>
+          <ModalBody display='flex' flexDirection='row' flexWrap='wrap' p={0}> {/* Set padding to zero */}
             {selectedProjects.map((project, index) => (
               <Box key={index} display="flex" flexDir='column' alignItems="center" mb={4}>
                 <a href={project.github} target="_blank" rel="noopener noreferrer"> {/* GitHub Link */}
