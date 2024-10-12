@@ -21,7 +21,7 @@ function Home() {
       w={{base:'100%',lg:'60%'}}
     
       // w={{ base: "100%", lg: "80%" }}
-      minH="100vh"
+      minH="60vh"
       h='auto'
       ml={{ base: "0%", lg: "10%" }}
       mt={{ base: "35px", lg: "5%" }}
